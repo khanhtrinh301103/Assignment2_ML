@@ -13,14 +13,18 @@
     </header>
     <main>
         <section class="upload-section">
-            <form action="#" method="post" enctype="multipart/form-data" class="upload-form">
+            <form action="{% url 'upload_image' %}" method="post" enctype="multipart/form-data" class="upload-form">
+                {% csrf_token %}
                 <input type="file" name="image" accept="image/*" class="file-input">
                 <button type="submit" class="upload-button">Upload Image</button>
             </form>
+            {% if category and style %}
+            <p>Classified as: Category name: {{ category }}, Interior Style: {{ style }}</p>
+            {% endif %}            
         </section>
     </main>
     <footer>
-        <p>This website is only for educational purpose only</p>
+        <p>This website is only for educational purposes only.</p>
     </footer>
 </body>
 </html>
